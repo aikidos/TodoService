@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TodoService</name>
+    </assembly>
+    <members>
+        <member name="T:TodoService.Controllers.TaskController">
+            <summary>
+            Контроллер для работы с задачами.
+            </summary>
+        </member>
+        <member name="M:TodoService.Controllers.TaskController.#ctor(TodoService.Services.ITaskService)">
+            <summary>
+            Конструктор <see cref="T:TodoService.Controllers.TaskController"/>.
+            </summary>
+        </member>
+        <member name="M:TodoService.Controllers.TaskController.Create">
+            <summary>
+            Создаёт новую задачу.
+            </summary>
+            <response code="202">`GUID` созданной задачи.</response>
+        </member>
+        <member name="M:TodoService.Controllers.TaskController.Get(System.Guid)">
+            <summary>
+            Возвращает информацию о задаче.
+            </summary>
+            <param name="id">`GUID` задачи.</param>
+            <response code="200">Информация о задаче.</response>
+            <response code="404">Задача с указанным `GUID` не найдена.</response>
+        </member>
+        <member name="T:TodoService.Dto.TaskDto">
+            <summary>
+            Информация о задаче.
+            </summary>
+        </member>
+        <member name="P:TodoService.Dto.TaskDto.Status">
+            <summary>
+            Текущий статус.
+            </summary>
+        </member>
+        <member name="P:TodoService.Dto.TaskDto.Timestamp">
+            <summary>
+            Последнее время изменения статуса.
+            </summary>
+        </member>
+        <member name="T:TodoService.Entities.TaskStatuses">
+            <summary>
+            Статус задачи.
+            </summary>
+        </member>
+        <member name="F:TodoService.Entities.TaskStatuses.Created">
+            <summary>
+            Создана.
+            </summary>
+        </member>
+        <member name="F:TodoService.Entities.TaskStatuses.Running">
+            <summary>
+            Запущена.
+            </summary>
+        </member>
+        <member name="F:TodoService.Entities.TaskStatuses.Finished">
+            <summary>
+            Завершена.
+            </summary>
+        </member>
+        <member name="T:TodoService.Model.TodoDbContext">
+            <summary>
+            Контекст БД.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoDbContext.Tasks">
+            <summary>
+            Задачи.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoDbContext.Statuses">
+            <summary>
+            Статусы задач.
+            </summary>
+        </member>
+        <member name="M:TodoService.Model.TodoDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{TodoService.Model.TodoDbContext})">
+            <summary>
+            Конструктор <see cref="T:TodoService.Model.TodoDbContext"/>.
+            </summary>
+        </member>
+        <member name="T:TodoService.Model.TodoTask">
+            <summary>
+            Задача.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoTask.Id">
+            <summary>
+            `GUID` задачи.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoTask.Status">
+            <summary>
+            Текущий статус.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoTask.StatusChangeDateTime">
+            <summary>
+            Последнее время изменения статуса.
+            </summary>
+        </member>
+        <member name="T:TodoService.Model.TodoTaskStatus">
+            <summary>
+            Статус задачи.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoTaskStatus.Id">
+            <summary>
+            Идентификатор статуса.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoTaskStatus.Name">
+            <summary>
+            Наименование статуса.
+            </summary>
+        </member>
+        <member name="P:TodoService.Model.TodoTaskStatus.Tasks">
+            <summary>
+            Задачи с данным статусом.
+            </summary>
+        </member>
+        <member name="T:TodoService.Services.ITaskService">
+            <summary>
+            Сервис для работы с задачами.
+            </summary>
+        </member>
+        <member name="M:TodoService.Services.ITaskService.CreateTaskAsync">
+            <summary>
+            Создаёт новую задачу и возвращает её `GUID`.
+            </summary>
+        </member>
+        <member name="M:TodoService.Services.ITaskService.GetTaskAsync(System.Guid)">
+            <summary>
+            Возвращает задачу.
+            `NULL`, если задача не найдена.
+            </summary>
+            <param name="guid">`GUID` задачи.</param>
+        </member>
+        <member name="T:TodoService.Services.TaskService">
+            <inheritdoc />
+        </member>
+        <member name="M:TodoService.Services.TaskService.#ctor(TodoService.Model.TodoDbContext)">
+            <summary>
+            Конструктор <see cref="T:TodoService.Services.TaskService"/>.
+            </summary>
+        </member>
+        <member name="M:TodoService.Services.TaskService.CreateTaskAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:TodoService.Services.TaskService.GetTaskAsync(System.Guid)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
